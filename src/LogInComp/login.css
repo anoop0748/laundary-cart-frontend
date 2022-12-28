@@ -1,0 +1,16 @@
+.login{
+    display: flex;
+    flex-direction: column;
+    margin: 10%;
+    width: 45%;
+    color: #4552C1;
+}
+h3{
+    color: #4552C1;
+}
+input{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #5861AE;;
+}
