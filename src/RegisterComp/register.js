@@ -1,5 +1,9 @@
 import { useRef } from "react";
 import axios  from 'axios'
+import Navbar from "../HeaderComp/navbar";
+import HomeSection from "../SectionOne/home";
+import FooterNav from "../FooterNavComp/footerNav";
+import CopyRight from "../FooterComp/copyright";
 
 
 const Url = "http://localhost:5000/register"
@@ -21,17 +25,29 @@ function RegisterPage(){
         console.log(response)
     }
     return(
-        <form ref={form_data}>
-            <input type="text" placeholder="Name" id="name"/>
-            <input type="email" placeholder="Email"id="email"/>
-            <input type="tel" placeholder="Phone" id="phone"/>
-            <input type="text" placeholder="State" id="state"/>
-            <input type="text" placeholder="District" id="district"/>
-            <input type="text" placeholder="Address" id="address"/>
-            <input type="text" placeholder="Pincode" id="pincode"/>
-            <input type="password" placeholder="Password" id="password"/>
-            <button onClick={Reg_User}>Register</button>
-        </form>
+        <>
+            <Navbar/>
+            <div>
+                <div>
+                    <HomeSection/>
+                </div>
+                <div>
+                    <form ref={form_data}>
+                        <input type="text" placeholder="Name" id="name" />
+                        <input type="email" placeholder="Email" id="email" />
+                        <input type="tel" placeholder="Phone" id="phone" />
+                        <input type="text" placeholder="State" id="state" />
+                        <input type="text" placeholder="District" id="district" />
+                        <input type="text" placeholder="Address" id="address" />
+                        <input type="text" placeholder="Pincode" id="pincode" />
+                        <input type="password" placeholder="Password" id="password" />
+                        <button onClick={Reg_User}>Register</button>
+                    </form>
+                </div>
+            </div>
+            <FooterNav/>
+            <CopyRight/>
+        </>
     )
 }
 
