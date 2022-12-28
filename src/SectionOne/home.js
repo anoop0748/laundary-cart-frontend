@@ -1,17 +1,26 @@
 import { Link } from "react-router-dom";
+import './home.css'
 
-function HomeSection(){
-    return (
-        <section>
-        <h1>Laundry Service</h1>
-        <h5>
+function HomeSection() {
+  return (
+    <section className="home">
+      <div>
+        <h1>Laundry <br /> Service</h1>
+      </div>
+      <div>
+        <p>
           Doorstep Wash & Dryclean Service
-        </h5>
+        </p>
+      </div>
+      <div>
         <h6>
           Don`t Have An Account
         </h6>
-        <Link to='/register' ><button>Register</button> </Link>     
-      </section>
-    )
+      </div>
+      <div>
+        <Link to='/register' ><button>Register</button> </Link>
+      </div>
+    </section>
+  )
 }
 export default HomeSection;
