@@ -1,10 +1,11 @@
 import React from "react";
+import './navbar.css'
 
 function Navbar (){
     return(
-        <nav>
-            <div>LAUNDRY</div>
-            <div>
+        <div className="header">
+            <div id="logo_name">LAUNDRY</div>
+            <div className="nav_links">
                 <ul>
                     <li>Home</li>
                     <li>Pricing</li>
@@ -12,7 +13,7 @@ function Navbar (){
                     <li>Sign In</li>
                 </ul>
             </div>
-        </nav>
+        </div>
     )
 }
 
