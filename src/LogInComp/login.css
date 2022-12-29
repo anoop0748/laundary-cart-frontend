@@ -1,8 +1,16 @@
-h3{
-    font-size: 30px;
+.login{
+    display: flex;
+    flex-direction: column;
+    margin: 10%;
+    width: 45%;
     color: #4552C1;
 }
-#loginsection{
-    margin-left: 140px;
-    margin-top: 50px;
+h3{
+    color: #4552C1;
+}
+input{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #5861AE;;
 }
