@@ -6,6 +6,7 @@ function Navbar (){
         <div className="header">
             <div id="logo_name">LAUNDRY</div>
             <div className="nav_links">
+                <style></style>
                 <ul>
                     <li>Home</li>
                     <li>Pricing</li>

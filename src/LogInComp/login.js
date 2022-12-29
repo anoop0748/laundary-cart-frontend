@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
-
+import './login.css'
 
 const Url = "http://localhost:5000/login"
 
@@ -34,12 +34,18 @@ function LogInForm(){
 
 
     return(
-        <div>
-        <h3>SIGN IN</h3>
+        <div id='login'>
+          <div id='loginsection'>
+          <h3>SIGN IN</h3>
+        <div id='input1'>
         <input type="text" placeholder="Mobile/Email" onBlur={userId}/>
-        <input type="password" placeholder="Password" onBlur={(e)=>setUser_password(e.target.value)}/>
+        </div>
+       <div id='input2'>
+       <input type="password" placeholder="Password" onBlur={(e)=>setUser_password(e.target.value)}/>
+       </div>
         <h5>Forget Password?</h5>
         <button onClick={logIn}>Sign In</button>
+          </div>
       </div>
       
     )

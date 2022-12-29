@@ -1,9 +1,9 @@
-
+import './footernav.css'
 
 
 function FooterNav() {
     return (
-        <div>
+        <div id='footer'>
             <section>
             <h4>Now Refer & Earn 500 for every referral*</h4>
             <h6><p><i>* Terms and conditions will be applied</i></p></h6>
