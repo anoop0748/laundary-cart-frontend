@@ -34,7 +34,8 @@ function LogInForm() {
 
 
     return(
-        <div>
+      <>
+       <div>
         <h3>SIGN IN</h3>
         <input type="text" placeholder="Mobile/Email" onBlur={userId}/>
         <input type="password" placeholder="Password" onBlur={(e)=>setUser_password(e.target.value)}/>
@@ -42,8 +43,7 @@ function LogInForm() {
       </div>
       <div>
         <button onClick={logIn}>Sign In</button>
-      </div>
-      
+      </div></>
     )
 }
 
