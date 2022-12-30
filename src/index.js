@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import RegisterPage from './RegisterComp/register';
+import Order from './Orderpage/Createorderpage/Order';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,9 +14,9 @@ root.render(
           <Routes>
             <Route path='/' element={<App/>} />
             <Route path='/register' element={<RegisterPage/>} />
+            <Route path='/CreateOrder' element={<Order/>}/>
           </Routes>
         </BrowserRouter>
-         
         </>
 );
 
