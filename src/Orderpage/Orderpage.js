@@ -18,7 +18,7 @@ function Orderpage(){
                   <span>  No order available</span>
                   <div>
 
-               <Link to='/CreateOrder'> <button  style={{'backgroundColor':'red'}} >Create</button></Link>
+               <Link to='/Cardorder'> <button  style={{'backgroundColor':'red'}} >Create</button></Link>
                   </div>
                 </div>
                 </div> 
