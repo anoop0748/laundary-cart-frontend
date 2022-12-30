@@ -43,6 +43,7 @@ let Userdetails = () => {
             <th>status</th>
 
             <th>View</th>
+            <th><i class="far fa-eye" className="icon"></i></th>
           </tr>
         </table>
       </div>
