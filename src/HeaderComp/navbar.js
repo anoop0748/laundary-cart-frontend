@@ -1,16 +1,18 @@
 import React from "react";
 import './navbar.css'
 
-function Navbar (){
+function Navbar (props){
+    const After_Login = props.After_Login;
+    const user_name = props.name
     return(
-        <div className="header">
+        <div className="header_nav">
             <div id="logo_name">LAUNDRY</div>
             <div className="nav_links">
                 <ul>
-                    <li>Home</li>
+                    {After_Login?"":<li>Home</li>}
                     <li>Pricing</li>
                     <li>Career</li>
-                    <li>Sign In</li>
+                    {After_Login?<li>{user_name}</li>:<li>Sign In</li>}
                 </ul>
             </div>
         </div>

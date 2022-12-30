@@ -1,25 +1,32 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import CopyRight from "../FooterComp/copyright"
+import Navbar from "../HeaderComp/navbar"
 import "./user.css"
 let Userdetails = () => {
+  const token = window.localStorage.getItem('token');
+  const [name, set_name] = useState("");
   let [state, setstate] = useState([])
   useEffect(() => {
+    
     fetch("https://laundry-backend-i2fe.onrender.com/successfulLogin", {
       method: "get",
       headers: {
-        authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzIzMzQzNzQsImRhdGEiOiI2M2FkYmQ2NmY5YWU4ZDk5MGYxNGVlMGIiLCJpYXQiOjE2NzIzMzA3NzR9.m-UYGxrHTABdiiIxoqug6W-gELS4qwRguhh1xheixHM"
+        authorization: token
       }
     })
       .then((res) => res.json())
-      .then((data) => { setstate(data.post[0].orders) })
+      .then((data) => {
+         setstate(data.post[0].orders);
+         set_name(data.post[0].name);
+         })
 
   }, [])
 
   return (
     <>
       {/* <Link to="/userdetails">create</Link> */}
-
-      {/* <input id="input" type="search" placeholder="search" autocomplete="off" spellcheck="false" role="combobox"  aria-live="polite"/> */}
+      <Navbar After_Login={true} name={name}/>
       <div className="header" >
         <table border={1} className="table">
           <tr>
@@ -77,6 +84,7 @@ let Userdetails = () => {
           </div>
         </>
       })}
+      <CopyRight/>
     </>
   )
 }
