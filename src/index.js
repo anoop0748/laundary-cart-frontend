@@ -7,6 +7,7 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import RegisterPage from './RegisterComp/register';
 import Userdetails from './userDetails/User';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
         <>
