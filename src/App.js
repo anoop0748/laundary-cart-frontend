@@ -4,7 +4,7 @@ import LogInForm from './LogInComp/login';
 import HomeSection from './SectionOne/home';
 import CopyRight from './FooterComp/copyright'
 import './index.css'
-
+// import Userdetails from './userDetails/User';
 
 
 function App() {
@@ -18,6 +18,7 @@ function App() {
       </div>
       <FooterNav />
       <CopyRight />
+      
     </>
   );
 }
