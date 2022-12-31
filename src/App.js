@@ -5,6 +5,7 @@ import HomeSection from './SectionOne/home';
 import CopyRight from './FooterComp/copyright'
 import './index.css'
 import SuccessPopUp from './SucessPopUp/popUp';
+import SummaryPage from './SummaryPage/summary';
 // import Userdetails from './userDetails/User';
 
 
@@ -13,6 +14,7 @@ function App() {
   return (
     <>
       {/* <SuccessPopUp/> */}
+      {/* <SummaryPage/> */}
       <Navbar />
       <div id='two_section'>
         <HomeSection />
