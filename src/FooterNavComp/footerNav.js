@@ -32,7 +32,7 @@ function FooterNav() {
             </ul>
             <ul>
                 <li>SOCIAL MEDIA</li>
-                <li id='icons'>
+                <li id='footer_icons'>
                     <img src='./projecIimages/facebook.svg' alt='facebook'/>
                     <img src='./projecIimages/instagram.svg' alt='instagram'/>
                     <img src='./projecIimages/linkedin.svg' alt='linkedin'/>
