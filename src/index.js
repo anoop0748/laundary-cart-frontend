@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import RegisterPage from './RegisterComp/register';
 import Userdetails from './userDetails/User';
+import Orderpage from './Orderpage/Orderpage';
+import Order from './Orderpage/Createorderpage/Order';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,6 +18,8 @@ root.render(
             <Route path='/' element={<App/>} />
             <Route path='/register' element={<RegisterPage/>} />
             <Route path='/userdetails' element={<Userdetails/>} />
+            <Route path='/Cardorder' element={<Order/>}/>
+            <Route path='Cardorderpage' element={<Orderpage/>}></Route>
           </Routes>
         </BrowserRouter>
          {/* <Userdetails/> */}
