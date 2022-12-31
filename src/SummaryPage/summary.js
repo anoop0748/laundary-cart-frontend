@@ -27,8 +27,10 @@ function SummaryPage(){
         function get_storeAdd(e){
             console.log(e.target.value)
             let sel_data = e.target.value;
-            if(sel_data !== ""){
+            if(sel_data !== "Choose..."){
                 set_storeAdd(true)
+            }else{
+                set_storeAdd(false)
             }
         }
         function get_user_add(e){
@@ -56,13 +58,13 @@ function SummaryPage(){
                     <div>
                         <h6>Store Location:</h6>
                         <select id='options'onChange={get_storeAdd}>
-                            <option></option>
+                            <option>Choose...</option>
                             <option>Sidhi</option>
                         </select>
                     </div>
                     <div>
                     <h6>Store Address:</h6>
-                    {store_address?<p>Near Smart Chok Sidhi</p>:<p>__</p>}
+                    {store_address?<p>Near Smart Chowk Sidhi</p>:<p>__</p>}
                     
                     </div>
                     <div>

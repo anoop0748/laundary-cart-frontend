@@ -8,7 +8,10 @@ let Userdetails = () => {
   const [name, set_name] = useState("");
   let [state, setstate] = useState([])
   useEffect(() => {
-    
+  if(!token){
+    window.location ='/';
+  }
+
     fetch("https://laundry-backend-i2fe.onrender.com/successfulLogin", {
       method: "get",
       headers: {

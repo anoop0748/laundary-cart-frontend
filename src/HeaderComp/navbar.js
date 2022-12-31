@@ -10,8 +10,9 @@ function Navbar (props){
         window.localStorage.clear("token");
         
               // Force a reload if the user has logged out.
-              window.location.reload();
               window.location.href = '/';
+              window.location.reload();
+              
     }
     return(
         <div className="header_nav">
