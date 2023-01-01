@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
 import CopyRight from "../FooterComp/copyright"
 import Navbar from "../HeaderComp/navbar"
 import "./user.css"
+import searchphoto from "./search.svg"
 let Userdetails = () => {
   const token = window.localStorage.getItem('token');
   const [name, set_name] = useState("");
   let [state, setstate] = useState([])
   useEffect(() => {
-  if(!token){
-    window.location ='/';
-  }
-
+    
     fetch("https://laundry-backend-i2fe.onrender.com/successfulLogin", {
       method: "get",
       headers: {
@@ -20,58 +17,61 @@ let Userdetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-         setstate(data.post[0].orders);
-         set_name(data.post[0].name);
-         })
+        console.log(data)
+        setstate(data.post[0].orders);
+        set_name(data.post[0].name);
+      })
 
   }, [])
 
   return (
     <>
       {/* <Link to="/userdetails">create</Link> */}
-      <Navbar After_Login={true} name={name}/>
-      <div className="header" >
-        <table border={1} className="table">
-          <tr>
-            <th>Order Id</th>
 
 
-            <th>Order Date & Time</th>
-
-            <th>Order Id</th>
-
-            <th>Store Location</th>
-
-            <th>City</th>
-
-            <th> Store Phone</th>
-
-            <th>items</th>
-
-            <th> Price</th>
-
-            <th>status</th>
-
-            <th>View</th>
-          </tr>
-        </table>
+      <Navbar After_Login={true} name={name} />
+      <div className="order-header">
+        <h3>Orders|0</h3>
+        <button style={{alignSelf:"center",padding:"7px 31px 6px 32px",color:"#5861AE"}}>create</button>
+        <img  src={searchphoto}/>
+        <input type={"search"} className="search-input"/>
       </div>
+      <table  className="table">
+              <tr className="table-head">
+                <th>Order Id</th>
 
 
+                <th>Order Date & Time</th>
+
+                <th>Store Location</th>
+
+                <th>City</th>
+
+                <th> Store Phone</th>
+
+                <th>Total items</th>
+
+                <th> Price</th>
+
+                <th>status</th>
+
+                <th>View</th>
+              </tr>
+      </table>
       {state.map((ele, i) => {
         return <>
           <div className="fakers-data" key={i}>
-            <table border={1} className="table-row">
+           <table>
               <tr>
                 <td>{ele.order_id}</td>
-                <td>{ele.orderdate}</td>
+                <td>{ele.orderDate}</td>
                 <td>{ele.location}</td>
                 <td>{ele.city}</td>
                 <td>{ele.phone}</td>
-                <td>{ele.total_items}</td>
-                <td style={{color: "#5861AE"}}>{ele.price}</td>
+                <td>{ele.total_item}</td>
+                <td style={{ color: "#5861AE" }}>{ele.price}</td>
                 <td>{ele.status}</td>
-                <td><i class="far fa-eye" className="icon"></i></td>
+                <td><i className="far fa-eye"></i></td>
               </tr>
             </table>
             {/* {<h3>{ele.order_id}</h3>}
@@ -86,7 +86,7 @@ let Userdetails = () => {
           </div>
         </>
       })}
-      <CopyRight/>
+      <CopyRight />
     </>
   )
 }
