@@ -2,11 +2,23 @@ import { useEffect, useState } from "react"
 import CopyRight from "../FooterComp/copyright"
 import Navbar from "../HeaderComp/navbar"
 import "./user.css"
-import searchphoto from "./search.svg"
-let Userdetails = () => {
+import searchphoto from "./mag.svg"
+import userhome from "../logo/home.png"
+import usermore from "../logo/more.png"
+import userlist from "../logo/list@2x.png"
+import { Link } from "react-router-dom"
+import SummaryPage from "../SummaryPage/summary"
+// import Orderpagesidebar from "../Orderpage/Orderpagesidebar"
+let Userdetails = (props) => {
   const token = window.localStorage.getItem('token');
   const [name, set_name] = useState("");
   let [state, setstate] = useState([])
+  let [sum,setsum]=useState(false)
+  function summary_page(){
+    console.log("ok")
+    setsum(true)
+       
+  }
   useEffect(() => {
     
     fetch("https://laundry-backend-i2fe.onrender.com/successfulLogin", {
@@ -27,17 +39,18 @@ let Userdetails = () => {
   return (
     <>
       {/* <Link to="/userdetails">create</Link> */}
-
-
+       
+      {sum?<SummaryPage orderstatus={true} />:""}
       <Navbar After_Login={true} name={name} />
+        {/* <Orderpagesidebar/> */}
       <div className="order-header">
-        <h3>Orders|0</h3>
-        <button style={{alignSelf:"center",padding:"7px 31px 6px 32px",color:"#5861AE"}}>create</button>
-        <img  src={searchphoto}/>
+        <h3 style={{marginLeft:"101px"}}>Orders|0</h3>
+        <Link to="/Cardorderpage"><button style={{alignSelf:"center",padding:"7px 28px 6px 29px",color:"#5861AE"}}>create</button></Link>
+        <img  src={searchphoto} style={{width:"20px",alignSelf:"center"}}/>
         <input type={"search"} className="search-input"/>
       </div>
-      <table  className="table">
-              <tr className="table-head">
+         <table  className="table-head" style={{backgroundColor:"black",color:"white"}}>
+              <tr>
                 <th>Order Id</th>
 
 
@@ -58,10 +71,14 @@ let Userdetails = () => {
                 <th>View</th>
               </tr>
       </table>
+      <div className="user-sidebar">
+       <div><img  src={userhome} /></div>
+       <div><img  src={usermore} /></div>
+       <div><img  src={userlist} /></div>
       {state.map((ele, i) => {
         return <>
-          <div className="fakers-data" key={i}>
-           <table>
+          <div  key={i}>
+           <table className="data-table">
               <tr>
                 <td>{ele.order_id}</td>
                 <td>{ele.orderDate}</td>
@@ -70,13 +87,26 @@ let Userdetails = () => {
                 <td>{ele.phone}</td>
                 <td>{ele.total_item}</td>
                 <td style={{ color: "#5861AE" }}>{ele.price}</td>
-                <td>{ele.status}</td>
-                <td><i className="far fa-eye"></i></td>
+                <td>{ele.status }</td>
+                <td><i className="far fa-eye" onClick={()=>{summary_page()}}></i></td>
               </tr>
             </table>
+            {/* {<h3>{ele.order_id}</h3>}
+            {<h3>{ele.orderdate}</h3>}
+            {<h3>{ele.location}</h3>}
+            {<h3>{ele.city}</h3>}
+            {<h3>{ele.phone}</h3>}
+            {<h3>{ele.total_items}</h3>}
+            {<h3>{ele.price}</h3>}
+            {<h3>{ele.status}</h3>} */}
+
           </div>
+        
         </>
       })}
+      </div>
+      {/* <Orderpagesidebar/> */}
+      
       <CopyRight />
     </>
   )
