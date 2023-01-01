@@ -57,7 +57,7 @@ function SummaryPage(props){
                 navigate('/sucessPopup')
             }
         }
-        
+        }    
     return(
         
         <div className="summary_container">
