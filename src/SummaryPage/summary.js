@@ -1,10 +1,21 @@
 import {  useState } from 'react'
 import {  useNavigate } from 'react-router-dom';
+import Userdetails from '../userDetails/User';
 import './summary.css'
 
-function SummaryPage(){
+function SummaryPage(props){
     const navigate = useNavigate()
     // dummy data for render table.
+    console.log(props.orderstatus);
+    let[usewrong,setwrong]=useState(false)
+
+    function wrong(){
+
+        console.log("wrong");
+    
+       setwrong(true)
+       navigate('/userdetails')
+    }
     let orderDetails = [
         {
             washItem: "Shirts",
@@ -28,7 +39,7 @@ function SummaryPage(){
             console.log(e.target.value)
             let sel_data = e.target.value;
             if(sel_data !== ""){
-                set_storeAdd(true)
+                set_storeAdd((prev)=>!prev)
             }
         }
         function get_user_add(e){
@@ -45,12 +56,14 @@ function SummaryPage(){
         }
         
     return(
+        
         <div className="summary_container">
+
             <div id="blur_container"></div>
             <div id="summary_header" >
                 <div id='sum_head_cont'>
                     <h3>SUMMARY</h3>
-                    <h4>X</h4>
+                <h4 onClick={()=>{wrong()}}>X</h4>
                 </div>
                 <div id='store_details'>
                     <div>
@@ -71,6 +84,7 @@ function SummaryPage(){
                         
                     </div>
                 </div>
+                {props.orderstatus?<div>enter</div>:""}
                 <div className='order_summ_cont'>
                     <div>Order Details</div>
                     <div>
@@ -130,12 +144,12 @@ function SummaryPage(){
                             <h6>Other</h6>
                             <p>#223, 10th road, Jp Nagar, Bangalore</p>
                         </div>
-                        <div><h5>ADD NEW</h5></div>
+                        {props.orderstatus?"":<div><h5>ADD NEW</h5></div>}
 
                     </div>
                 </div>
                 <div id='summ_footer'>
-                    <button onClick={confrim_order} style={store_address && user_add?{backgroundColor:'#4552C1'}:{}}>Confirm</button>
+                   {props.orderstatus? <button style={{backgroundColor:"red",padding:"5px"}}>CancalOrder</button>: <button onClick={confrim_order} style={store_address && user_add?{backgroundColor:'#4552C1'}:{}}>Confirm</button>}
                 </div>
             </div>
         </div>

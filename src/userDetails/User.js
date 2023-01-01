@@ -7,11 +7,18 @@ import userhome from "../logo/home.png"
 import usermore from "../logo/more.png"
 import userlist from "../logo/list@2x.png"
 import { Link } from "react-router-dom"
+import SummaryPage from "../SummaryPage/summary"
 // import Orderpagesidebar from "../Orderpage/Orderpagesidebar"
-let Userdetails = () => {
+let Userdetails = (props) => {
   const token = window.localStorage.getItem('token');
   const [name, set_name] = useState("");
   let [state, setstate] = useState([])
+  let [sum,setsum]=useState(false)
+  function summary_page(){
+    console.log("ok")
+    setsum(true)
+       
+  }
   useEffect(() => {
     console.log(token)
     fetch("https://laundry-backend-i2fe.onrender.com/successfulLogin", {
@@ -32,8 +39,8 @@ let Userdetails = () => {
   return (
     <>
       {/* <Link to="/userdetails">create</Link> */}
-
-
+       
+      {sum?<SummaryPage orderstatus={true} />:""}
       <Navbar After_Login={true} name={name} />
         {/* <Orderpagesidebar/> */}
       <div className="order-header">
@@ -80,18 +87,11 @@ let Userdetails = () => {
                 <td>{ele.phone}</td>
                 <td>{ele.total_item}</td>
                 <td style={{ color: "#5861AE" }}>{ele.price}</td>
-                <td>{ele.status}</td>
-                <td><i className="far fa-eye"></i></td>
+                <td>{ele.status }</td>
+                <td><i className="far fa-eye" onClick={()=>{summary_page()}}></i></td>
               </tr>
             </table>
-            {/* {<h3>{ele.order_id}</h3>}
-            {<h3>{ele.orderdate}</h3>}
-            {<h3>{ele.location}</h3>}
-            {<h3>{ele.city}</h3>}
-            {<h3>{ele.phone}</h3>}
-            {<h3>{ele.total_items}</h3>}
-            {<h3>{ele.price}</h3>}
-            {<h3>{ele.status}</h3>} */}
+           
 
           </div>
         
