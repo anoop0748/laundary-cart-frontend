@@ -74,15 +74,6 @@ let Userdetails = () => {
                 <td><i className="far fa-eye"></i></td>
               </tr>
             </table>
-            {/* {<h3>{ele.order_id}</h3>}
-            {<h3>{ele.orderdate}</h3>}
-            {<h3>{ele.location}</h3>}
-            {<h3>{ele.city}</h3>}
-            {<h3>{ele.phone}</h3>}
-            {<h3>{ele.total_items}</h3>}
-            {<h3>{ele.price}</h3>}
-            {<h3>{ele.status}</h3>} */}
-
           </div>
         </>
       })}
