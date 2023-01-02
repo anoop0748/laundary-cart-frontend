@@ -14,11 +14,11 @@ root.render(
         <>
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<App/>} />
+            <Route path='/' element={<Orderpage/>} />
             <Route path='/register' element={<RegisterPage/>} />
             <Route path='/userdetails' element={<Userdetails/>} />
-            <Route path='/Cardorder' element={<Order/>}/>
-            <Route path='Cardorderpage' element={<Orderpage/>}></Route>
+            <Route path='/CreateOrder' element={<Order/>}/>
+            <Route path='/Cardorderpage' element={<Orderpage/>}></Route>
           </Routes>
         </BrowserRouter>
          {/* <Userdetails/> */}

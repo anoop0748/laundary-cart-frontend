@@ -1,7 +1,8 @@
 #sidebar{
     width: 60px;
-    height: 500px;
+    height: 600px;
     background-color: #5861AE;
+    border: 1px solid gray;
 }
 .img{
     width: 100%;
@@ -19,5 +20,5 @@ img{
     height: 100%;
 }
 #u{
-    background-color: rgb(104, 27, 27);
+    background-color: white;
 }
