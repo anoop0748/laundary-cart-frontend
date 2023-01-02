@@ -58,6 +58,10 @@ function SummaryPage(props){
                 navigate('/sucessPopup')
             }
         }
+        function comf_cancal(){
+            props.confrimCancal(true);
+            props.changeback()
+        }
             
     return(
         
@@ -153,7 +157,7 @@ function SummaryPage(props){
                     </div>
                 </div>
                 <div id='summ_footer'>
-                   {props.orderstatus? <button  style={{backgroundColor:"red",padding:"5px"}}>CancalOrder</button>:
+                   {props.orderstatus? <button onClick={comf_cancal} style={{backgroundColor:"red",padding:"5px"}}>CancalOrder</button>:
                     <button onClick={confrim_order} style={store_address && user_add?{backgroundColor:'#4552C1'}:{}}>Confirm</button>}
                 </div>
             </div>

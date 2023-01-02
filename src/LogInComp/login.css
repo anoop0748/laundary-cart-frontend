@@ -1,3 +1,13 @@
+
+h3{
+    font-size: 30px;
+    color: #4552C1;
+}
+#loginsection{
+    margin-left: 140px;
+    margin-top: 50px;
+}
+
 .login{
     display: flex;
     flex-direction: column;
@@ -43,3 +53,4 @@
 .login label{
     font-size: 12px;
 }
+

@@ -18,6 +18,7 @@ function Navbar (props){
         <div className="header_nav">
             <div id="logo_name">LAUNDRY</div>
             <div className="nav_links">
+                <style></style>
                 <ul>
                     {After_Login?"":<li>Home</li>}
                     <li>Pricing</li>

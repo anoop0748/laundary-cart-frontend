@@ -8,8 +8,10 @@ import usermore from "../logo/more.png"
 import userlist from "../logo/list@2x.png"
 import { Link } from "react-router-dom"
 import SummaryPage from "../SummaryPage/summary"
+import SuccessPopUp from "../SucessPopUp/popUp"
 // import Orderpagesidebar from "../Orderpage/Orderpagesidebar"
 let Userdetails = (props) => {
+  const [conf_can, setConf_can] = useState(false)
   const token = window.localStorage.getItem('token');
   const [name, set_name] = useState("");
   let [state, setstate] = useState([])
@@ -41,8 +43,8 @@ let Userdetails = (props) => {
   return (
     <>
       {/* <Link to="/userdetails">create</Link> */}
-       
-      {sum?<SummaryPage orderstatus={true} changeback ={go_back_toUserD} />:""}
+       {conf_can?< SuccessPopUp/>:""}
+      {sum?<SummaryPage orderstatus={true} changeback ={go_back_toUserD} confrimCancal={setConf_can}/>:""}
       <Navbar After_Login={true} name={name} />
         {/* <Orderpagesidebar/> */}
       <div className="order-header">
