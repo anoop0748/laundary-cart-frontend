@@ -10,6 +10,7 @@ import Orderpage from './Orderpage/Orderpage';
 import Order from './Orderpage/Createorderpage/Order';
 import SummaryPage from './SummaryPage/summary';
 import SuccessPopUp from './SucessPopUp/popUp';
+import Cancal from './cancalorderpopup/cancal';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -24,6 +25,7 @@ root.render(
             <Route path='/userdetails' element={<Userdetails/>} />
             <Route path='/Cardorder' element={<Order/>}/>
             <Route path='Cardorderpage' element={<Orderpage/>}></Route>
+            <Route path='/cancalorder' element={<Cancal/>}/>
           </Routes>
         </BrowserRouter>
          {/* <Userdetails/> */}
