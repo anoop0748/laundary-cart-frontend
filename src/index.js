@@ -20,11 +20,13 @@ root.render(
           <Routes>
             <Route path='/' element={<App/>} />
             <Route path='/register' element={<RegisterPage/>} />
+
+            {/* <Route path='/CreateOrder' element={<Order/>}/> */}
             <Route path='/summary' element={<SummaryPage/>}/>
             <Route path='/sucessPopup' element={<SuccessPopUp/>}/>
             <Route path='/userdetails' element={<Userdetails/>} />
-            {/* <Route path='/CreateOrder' element={<Order/>}/> */}
-            {/* <Route path='/Cardorderpage' element={<Orderpage/>}></Route> */}
+            <Route path='/Cardorder' element={<Order/>}/>
+            <Route path='Cardorderpage' element={<Orderpage/>}/>
           </Routes>
         </BrowserRouter>
         </>
