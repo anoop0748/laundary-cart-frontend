@@ -17,14 +17,14 @@ function App() {
   return (
     <>
 
-      {/* <Navbar/>
-      <HomeSection/>
-      <LogInForm/>
-      <FooterNav/>
+      {/* <Navbar/> */}
+      {/* <HomeSection/>
+      <LogInForm/> */}
+      {/* <FooterNav/>
       <CopyRight/> */}
-      <Order></Order>
-
-      {/* <SuccessPopUp/> */}
+      {/* <Order></Order> */}
+{/* <SuccessPopUp/> */}
+      
       {/* <SummaryPage/> */}
       <Navbar />
       <div id='two_section'>

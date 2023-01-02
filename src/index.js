@@ -8,7 +8,6 @@ import RegisterPage from './RegisterComp/register';
 import Order from './Orderpage/Createorderpage/Order';
 import Userdetails from './userDetails/User';
 import Orderpage from './Orderpage/Orderpage';
-import Order from './Orderpage/Createorderpage/Order';
 import SummaryPage from './SummaryPage/summary';
 import SuccessPopUp from './SucessPopUp/popUp';
 
@@ -22,17 +21,14 @@ root.render(
             <Route path='/' element={<App/>} />
             <Route path='/register' element={<RegisterPage/>} />
 
-            <Route path='/CreateOrder' element={<Order/>}/>
-          </Routes>
-        </BrowserRouter>
+            {/* <Route path='/CreateOrder' element={<Order/>}/> */}
             <Route path='/summary' element={<SummaryPage/>}/>
             <Route path='/sucessPopup' element={<SuccessPopUp/>}/>
             <Route path='/userdetails' element={<Userdetails/>} />
             <Route path='/Cardorder' element={<Order/>}/>
-            <Route path='Cardorderpage' element={<Orderpage/>}></Route>
+            <Route path='Cardorderpage' element={<Orderpage/>}/>
           </Routes>
         </BrowserRouter>
-         {/* <Userdetails/> */
         </>
 );
 

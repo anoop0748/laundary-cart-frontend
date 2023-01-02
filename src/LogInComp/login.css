@@ -26,6 +26,7 @@ h3{
     border-right: none;
     border-bottom: 1px solid #5861AE;
     background-color: #B9C0FD1A;
+    outline: none;
 }
 #pass_container{
     margin-top: 25px;
