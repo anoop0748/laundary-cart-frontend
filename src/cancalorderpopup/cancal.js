@@ -1,7 +1,7 @@
 import "./cancal.css"
 import Alert_icon from "./triangle-exclamation-solid.svg"
 let Cancal = (props) => {
-    // console.log(props.)
+    
     return (
         <>
             <div id="cancal-outer">
