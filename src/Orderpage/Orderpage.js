@@ -4,7 +4,7 @@ import Orderpagesidebar from './Orderpagesidebar'
 import './Orderpage.css'
 import Order from './Createorderpage/Order'
 import { Link } from 'react-router-dom'
-function order(){
+function Orderpage(){
     return(
         <div>
             <Orderpagenav></Orderpagenav>
@@ -18,11 +18,16 @@ function order(){
                   <span>  No order available</span>
                   <div>
 
+
                <Link to='/CreateOrder'> <button  style={{'backgroundColor':'red'}} >Create</button></Link>
+               <Link to='/Cardorder'> <button  style={{'backgroundColor':'red'}} >Create</button></Link>
+
                   </div>
                 </div>
                 </div> 
         </div>
     )
 }
-export default order
+
+
+export default Orderpage

@@ -1,0 +1,29 @@
+
+.home{
+    display: flex;
+    flex-direction: column;
+    margin: 10%;
+    width: 45%;
+}
+.home h1{
+    color: #5861AE;
+    font-size: 60px;
+    margin: 0px;
+}
+.home p{
+    font-size: 12px;
+
+
+}
+.home h6{
+    font-size: 10px;
+    font-weight: lighter;
+    margin-top: 10%;
+}
+.home button{
+    background-color: #fff;
+    border: 2px solid #4552C1;
+    border-radius: 4px;
+    padding: 2% 4%;
+}
+
