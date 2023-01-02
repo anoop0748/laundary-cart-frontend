@@ -3,8 +3,6 @@ import { useState } from 'react';
 import './login.css'
 import { useNavigate } from "react-router-dom";
 
-const Url = "http://localhost:5000/login"
-
 
 const Url = "https://laundry-backend-i2fe.onrender.com/login"
 
@@ -66,19 +64,6 @@ function LogInForm() {
   }
 
 
-
-
-    return(
-        <div id='login'>
-          <div id='loginsection'>
-          <h3>SIGN IN</h3>
-        <div id='input1'>
-        <input type="text" placeholder="Mobile/Email" onBlur={userId}/>
-        </div>
-       <div id='input2'>
-       <input type="password" placeholder="Password" onBlur={(e)=>setUser_password(e.target.value)}/>
-       </div>
-        <h5>Forget Password?</h5>
 
   return (
     <div className='login'>

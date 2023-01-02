@@ -1,12 +1,10 @@
 
-import './footernav.css'
 import './footerNav.css'
 
 function FooterNav() {
     return (
 
         <div id='footer'>
-            <section>
         <div>
             <section className='refer_container'>
 
@@ -45,6 +43,7 @@ function FooterNav() {
                 
             </ul>
         </section>
+        </div>
         </div>
     )
 }

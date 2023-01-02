@@ -1,21 +1,16 @@
 import { Link } from "react-router-dom";
 
 
-function HomeSection(){
-    return (
-        <section>
-        <h1>Laundry Service</h1>
-        <h5>
-function HomeSection(props) {
-  console.log(props.change_login)
+function HomeSection(props){
+   
   return (
     <section className="home" style={props.change_login?{width:"42%"}:{}}>
       <div>
         <h1>Laundry <br /> Service</h1>
       </div>
       <div>
-        <p>
-
+        <p></p>
+          <h5>
           Doorstep Wash & Dryclean Service
         </h5>
         <h6>
@@ -23,13 +18,9 @@ function HomeSection(props) {
         </h6>
 
         <Link to='/register' ><button>Register</button> </Link>     
+        </div>
       </section>
-    )
-      </div>
-      <div>
-        <Link to={props.change_login?'/':'/register'} ><button >{props.change_login?"Sign In":"Register"}</button> </Link>
-      </div>
-    </section>
+      
   )
 }
 export default HomeSection;
