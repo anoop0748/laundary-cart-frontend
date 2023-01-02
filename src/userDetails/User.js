@@ -34,13 +34,15 @@ let Userdetails = (props) => {
         set_name(data.post[0].name);
       })
 
-  }, [])
-
+  },[])
+  function go_back_toUserD(){
+    setsum(false)
+  }
   return (
     <>
       {/* <Link to="/userdetails">create</Link> */}
        
-      {sum?<SummaryPage orderstatus={true} />:""}
+      {sum?<SummaryPage orderstatus={true} changeback ={go_back_toUserD} />:""}
       <Navbar After_Login={true} name={name} />
         {/* <Orderpagesidebar/> */}
       <div className="order-header">

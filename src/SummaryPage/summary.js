@@ -11,10 +11,10 @@ function SummaryPage(props){
 
     function wrong(){
 
-        console.log("wrong");
+        console.log("wrong",props);
     
-       setwrong(true)
-       navigate('/userdetails')
+    //    setwrong(true)
+       props.changeback()
     }
     let orderDetails = [
         {
@@ -32,7 +32,7 @@ function SummaryPage(props){
             washType: "Washing,Ironing",
             priceDetails: "5 X 20 =",
             total:100
-        }]
+        }];
         const [store_address,set_storeAdd] = useState(false);
         const [user_add,set_userAdd] = useState(false)
         function get_storeAdd(e){
@@ -45,6 +45,7 @@ function SummaryPage(props){
                 set_storeAdd(false)
 
         }
+    }
         function get_user_add(e){
             console.log(e.target.value);
             set_userAdd(true);
@@ -57,7 +58,7 @@ function SummaryPage(props){
                 navigate('/sucessPopup')
             }
         }
-        }    
+            
     return(
         
         <div className="summary_container">
@@ -66,7 +67,7 @@ function SummaryPage(props){
             <div id="summary_header" >
                 <div id='sum_head_cont'>
                     <h3>SUMMARY</h3>
-                <h4 onClick={()=>{wrong()}}>X</h4>
+                <h4 onClick={wrong}>X</h4>
                 </div>
                 <div id='store_details'>
                     <div>
@@ -152,7 +153,8 @@ function SummaryPage(props){
                     </div>
                 </div>
                 <div id='summ_footer'>
-                   {props.orderstatus? <button style={{backgroundColor:"red",padding:"5px"}}>CancalOrder</button>: <button onClick={confrim_order} style={store_address && user_add?{backgroundColor:'#4552C1'}:{}}>Confirm</button>}
+                   {props.orderstatus? <button  style={{backgroundColor:"red",padding:"5px"}}>CancalOrder</button>:
+                    <button onClick={confrim_order} style={store_address && user_add?{backgroundColor:'#4552C1'}:{}}>Confirm</button>}
                 </div>
             </div>
         </div>
