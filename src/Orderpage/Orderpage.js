@@ -19,6 +19,7 @@ function Orderpage(){
                   <div>
 
                <Link to='/CreateOrder'> <button  style={{'border':'2px solid #5861AE','width':'90px','height':'25px','color':'#5861AE','marginTop':"10px",'borderRadius':'5px'}} >Create</button></Link>
+
                   </div>
                 </div>
                 </div> 
@@ -26,4 +27,6 @@ function Orderpage(){
         </div>
     )
 }
+
+
 export default Orderpage

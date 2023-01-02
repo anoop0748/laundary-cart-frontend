@@ -41,6 +41,7 @@
     color: #5861AE;
     text-transform: uppercase;
     opacity: 1;
+    margin-left: 80px;
 }
 .header_nav .nav_links{
     width: 80%;

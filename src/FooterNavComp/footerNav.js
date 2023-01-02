@@ -1,10 +1,15 @@
-import './footerNav.css'
 
+import './footernav.css'
+import './footerNav.css'
 
 function FooterNav() {
     return (
+
+        <div id='footer'>
+            <section>
         <div>
             <section className='refer_container'>
+
             <h4>Now Refer & Earn 500 for every referral*</h4>
             <h6><i>* Terms and conditions will be applied</i></h6>
         </section>
@@ -32,7 +37,7 @@ function FooterNav() {
             </ul>
             <ul>
                 <li>SOCIAL MEDIA</li>
-                <li id='icons'>
+                <li id='footer_icons'>
                     <img src='./projecIimages/facebook.svg' alt='facebook'/>
                     <img src='./projecIimages/instagram.svg' alt='instagram'/>
                     <img src='./projecIimages/linkedin.svg' alt='linkedin'/>

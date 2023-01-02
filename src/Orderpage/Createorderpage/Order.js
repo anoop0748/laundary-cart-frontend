@@ -313,7 +313,7 @@ function Orderpage() {
                     </tbody>
                 </table>
                 <div id='navbutton'>
-                    <Link to='/Cardorderpage'>                    <div><button style={{ 'border': '1px solid #5861AE', 'color': '#5861AE', 'width': '85px', 'height': '32px', 'borderRadius': '3px' }}>Cancal</button></div></Link>
+                    <Link to='/'>                    <div><button style={{ 'border': '1px solid #5861AE', 'color': '#5861AE', 'width': '85px', 'height': '32px', 'borderRadius': '3px' }}>Cancal</button></div></Link>
                     <div><button style={{ 'border': '1px solid #5861AE', 'color': '#FFFFFF', 'width': '85px', 'height': '32px', 'backgroundColor': '#5861AE', 'borderRadius': '3px' }}>Proceed</button></div>
 
                 </div>
