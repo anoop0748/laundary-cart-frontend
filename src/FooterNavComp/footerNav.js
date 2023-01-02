@@ -1,6 +1,4 @@
 
-import './footerNav.css'
-
 function FooterNav() {
     return (
 
