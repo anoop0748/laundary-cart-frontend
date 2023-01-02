@@ -8,9 +8,9 @@ import usermore from "../logo/more.png"
 import userlist from "../logo/list@2x.png"
 import { Link } from "react-router-dom"
 import SummaryPage from "../SummaryPage/summary"
-import Cancal from "../cancalorderpopup/cancal"
 // import Orderpagesidebar from "../Orderpage/Orderpagesidebar"
 let Userdetails = (props) => {
+  const [conf_can, setConf_can] = useState(false)
   const token = window.localStorage.getItem('token');
   const [name, set_name] = useState("");
   let [state, setstate] = useState([])
@@ -28,7 +28,7 @@ let Userdetails = (props) => {
   }
   // console.log(props.updatecancal);
   useEffect(() => {
-    console.log(token)
+    
     fetch("https://laundry-backend-i2fe.onrender.com/successfulLogin", {
       method: "get",
       headers: {
@@ -43,14 +43,15 @@ let Userdetails = (props) => {
         setdata(data.post[0])
       })
 
-  }, [])
-
+  },[])
+  function go_back_toUserD(){
+    setsum(false)
+  }
   return (
     <>
       {/* <Link to="/userdetails">create</Link> */}
-      { can?<Cancal setcan={setcan} />:""}
-      {sum?<SummaryPage orderstatus={true} cancalorder={ca}/>:""}
-      {props.updatecancal?<Cancal/>:""}
+       
+      {sum?<SummaryPage orderstatus={true} />:""}
       <Navbar After_Login={true} name={name} />
         {/* <Orderpagesidebar/> */}
       <div className="order-header">
@@ -101,7 +102,14 @@ let Userdetails = (props) => {
                 <td><i className="far fa-eye" onClick={()=>{summary_page()}}></i></td>
               </tr>
             </table>
-           
+            {/* {<h3>{ele.order_id}</h3>}
+            {<h3>{ele.orderdate}</h3>}
+            {<h3>{ele.location}</h3>}
+            {<h3>{ele.city}</h3>}
+            {<h3>{ele.phone}</h3>}
+            {<h3>{ele.total_items}</h3>}
+            {<h3>{ele.price}</h3>}
+            {<h3>{ele.status}</h3>} */}
 
           </div>
         

@@ -15,10 +15,10 @@ function SummaryPage(props){
     // }
     function wrong(){
 
-        console.log("wrong");
+        console.log("wrong",props);
     
-       setwrong(true)
-       navigate('/userdetails')
+    //    setwrong(true)
+       props.changeback()
     }
     let orderDetails = [
         {
@@ -36,16 +36,20 @@ function SummaryPage(props){
             washType: "Washing,Ironing",
             priceDetails: "5 X 20 =",
             total:100
-        }]
+        }];
         const [store_address,set_storeAdd] = useState(false);
         const [user_add,set_userAdd] = useState(false)
         function get_storeAdd(e){
             console.log(e.target.value)
             let sel_data = e.target.value;
-            if(sel_data !== ""){
-                set_storeAdd((prev)=>!prev)
-            }
+
+            if(sel_data !== "Choose..."){
+                set_storeAdd(true)
+            }else{
+                set_storeAdd(false)
+
         }
+    }
         function get_user_add(e){
             console.log(e.target.value);
             set_userAdd(true);
@@ -58,7 +62,11 @@ function SummaryPage(props){
                 navigate('/sucessPopup')
             }
         }
-        
+        function comf_cancal(){
+            props.confrimCancal(true);
+            props.changeback()
+        }
+            
     return(
         
         <div className="summary_container">
@@ -67,19 +75,19 @@ function SummaryPage(props){
             <div id="summary_header" >
                 <div id='sum_head_cont'>
                     <h3>SUMMARY</h3>
-                <h4 onClick={()=>{wrong()}}>X</h4>
+                <h4 onClick={wrong}>X</h4>
                 </div>
                 <div id='store_details'>
                     <div>
                         <h6>Store Location:</h6>
                         <select id='options'onChange={get_storeAdd}>
-                            <option></option>
+                            <option>Choose...</option>
                             <option>Sidhi</option>
                         </select>
                     </div>
                     <div>
                     <h6>Store Address:</h6>
-                    {store_address?<p>Near Smart Chok Sidhi</p>:<p>__</p>}
+                    {store_address?<p>Near Smart Chowk Sidhi</p>:<p>__</p>}
                     
                     </div>
                     <div>
@@ -153,7 +161,7 @@ function SummaryPage(props){
                     </div>
                 </div>
                 <div id='summ_footer'>
-                   {props.orderstatus? <button style={{backgroundColor:"red",padding:"5px"}} onClick={()=>{props.cancalorder()}}>CancalOrder</button>: <button onClick={confrim_order} style={store_address && user_add?{backgroundColor:'#4552C1'}:{}}>Confirm</button>}
+                   {props.orderstatus? <button style={{backgroundColor:"red",padding:"5px"}}>CancalOrder</button>: <button onClick={confrim_order} style={store_address && user_add?{backgroundColor:'#4552C1'}:{}}>Confirm</button>}
                 </div>
             </div>
         </div>

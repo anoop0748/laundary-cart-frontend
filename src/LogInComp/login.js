@@ -4,6 +4,8 @@ import './login.css'
 import { useNavigate } from "react-router-dom";
 
 
+
+
 const Url = "https://laundry-backend-i2fe.onrender.com/login"
 
 
@@ -37,12 +39,12 @@ function LogInForm() {
         return alert("Please enter valid Email")
       }
     }
-
-
-
-
-
   }
+
+
+
+
+  
   async function logIn(e) {
     e.preventDefault();
     if (user_name === "") {
@@ -65,6 +67,19 @@ function LogInForm() {
 
 
 
+
+    // return(
+    //     <div id='login'>
+    //       <div id='loginsection'>
+    //       <h3>SIGN IN</h3>
+    //     <div id='input1'>
+    //     <input type="text" placeholder="Mobile/Email" onBlur={userId}/>
+    //     </div>
+    //    <div id='input2'>
+    //    <input type="password" placeholder="Password" onBlur={(e)=>setUser_password(e.target.value)}/>
+    //    </div>
+    //     <h5>Forget Password?</h5>
+
   return (
     <div className='login'>
       <div>
@@ -84,13 +99,14 @@ function LogInForm() {
       </div>
       <div>
         <h6>Forget Password?</h6>
+
       </div>
       <div id='signInBtn'>
         <button onClick={logIn}>Sign In</button>
+          </div>
       </div>
-    </div>
-
-  )
+      
+    )
 }
 
 export default LogInForm;

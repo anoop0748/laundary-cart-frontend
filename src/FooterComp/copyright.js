@@ -3,8 +3,8 @@ import './copyright.css'
 
 function CopyRight(){
     return(
-        <div className="copyright">
-            <p>2021 &copy; Laundry</p>
+        <div className='copyright'>
+            <h4>2021 &copy; Laundry</h4>
         </div>
     )
 }

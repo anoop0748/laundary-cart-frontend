@@ -1,8 +1,10 @@
+
 .home{
     display: flex;
     flex-direction: column;
     margin: 10%;
     width: 45%;
+    
 }
 .home h1{
     color: #5861AE;
@@ -25,3 +27,4 @@
     border-radius: 4px;
     padding: 2% 4%;
 }
+

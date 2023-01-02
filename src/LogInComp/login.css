@@ -1,3 +1,13 @@
+
+h3{
+    font-size: 30px;
+    color: #4552C1;
+}
+#loginsection{
+    margin-left: 140px;
+    margin-top: 50px;
+}
+
 .login{
     display: flex;
     flex-direction: column;
@@ -16,6 +26,7 @@
     border-right: none;
     border-bottom: 1px solid #5861AE;
     background-color: #B9C0FD1A;
+    outline: none;
 }
 #pass_container{
     margin-top: 25px;
@@ -42,3 +53,4 @@
 .login label{
     font-size: 12px;
 }
+
