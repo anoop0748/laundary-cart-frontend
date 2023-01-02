@@ -40,7 +40,7 @@ let Userdetails = (props) => {
         console.log(data)
         setstate(data.post[0].orders);
         set_name(data.post[0].name);
-        setdata(data.post[0])
+
       })
 
   }, [])
