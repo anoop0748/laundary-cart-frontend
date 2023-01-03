@@ -25,7 +25,8 @@ root.render(
             <Route path='/sucessPopup' element={<SuccessPopUp/>}/>
             <Route path='/userdetails' element={<Userdetails/>} />
             <Route path='/Cardorder' element={<Order/>}/>
-            <Route path='Cardorderpage' element={<Orderpage/>}></Route>
+            <Route path='/Cardorderpage' element={<Orderpage/>}/>
+
           </Routes>
         </BrowserRouter>
         </>

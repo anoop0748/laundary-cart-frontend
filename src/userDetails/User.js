@@ -37,7 +37,7 @@ let Userdetails = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        console.log(data.post[0])
         setstate(data.post[0].orders);
         set_name(data.post[0].name);
 
@@ -55,7 +55,8 @@ let Userdetails = (props) => {
         {/* <Orderpagesidebar/> */}
       <div className="order-header">
         <h3 style={{marginLeft:"101px"}}>Orders|0</h3>
-        <Link to="/Cardorder"><button style={{alignSelf:"center",padding:"7px 28px 6px 29px",color:"#5861AE",marginTop:"34px"}}>create</button></Link>
+        <Link to="/Cardorder"><button style={{alignSelf:"center",padding:"7px 28px 6px 29px",color:"#5861AE"}}>create</button></Link>
+
         <img  src={searchphoto} style={{width:"20px",alignSelf:"center"}}/>
         <input type={"search"} className="search-input"/>
       </div>
