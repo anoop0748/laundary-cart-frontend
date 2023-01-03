@@ -50,12 +50,12 @@ let Userdetails = (props) => {
       {/* <Link to="/userdetails">create</Link> */}
       { can?<Cancal setcan={setcan} />:""}
       {sum?<SummaryPage orderstatus={true} cancalorder={ca}/>:""}
-      {props.updatecancal?<Cancal/>:""}
+      {/* {props.updatecancal?<Cancal/>:""} */}
       <Navbar After_Login={true} name={name} />
         {/* <Orderpagesidebar/> */}
       <div className="order-header">
         <h3 style={{marginLeft:"101px"}}>Orders|0</h3>
-        <Link to="/Cardorder"><button style={{alignSelf:"center",padding:"7px 28px 6px 29px",color:"#5861AE",marginTop:"15px"}}>create</button></Link>
+        <Link to="/Cardorder"><button style={{alignSelf:"center",padding:"7px 28px 6px 29px",color:"#5861AE",marginTop:"34px"}}>create</button></Link>
         <img  src={searchphoto} style={{width:"20px",alignSelf:"center"}}/>
         <input type={"search"} className="search-input"/>
       </div>

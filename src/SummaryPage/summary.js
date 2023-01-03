@@ -8,7 +8,7 @@ function SummaryPage(props){
     // dummy data for render table.
     console.log(props.orderstatus);
     // let[usewrong,setwrong]=useState(false)
-    let[showcancal,setcancal]=useState(false)
+    // let[showcancal,setcancal]=useState(false)
     // function cancalorder(){
     //      console.log("from cancal fun");
     //     //  setcancal(true)
@@ -161,7 +161,7 @@ function SummaryPage(props){
                     </div>
                 </div>
                 <div id='summ_footer'>
-                   {props.orderstatus? <button style={{backgroundColor:"red",padding:"5px"}}>CancalOrder</button>: <button onClick={confrim_order} style={store_address && user_add?{backgroundColor:'#4552C1'}:{}}>Confirm</button>}
+                   {props.orderstatus? <button style={{backgroundColor:"red",padding:"5px"}} onClick={()=>{props.cancalorder()}}>CancalOrder</button>: <button onClick={confrim_order} style={store_address && user_add?{backgroundColor:'#4552C1'}:{}}>Confirm</button>}
                 </div>
             </div>
         </div>
