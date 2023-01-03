@@ -16,15 +16,22 @@ let Userdetails = (props) => {
   let [state, setstate] = useState([])
   let [sum,setsum]=useState(false)
   let [can,setcan]=useState(false)
- 
+  const [conf_can, setConf_can] = useState(false)
+  let [order_det,setorder_det]=useState()
   function ca(){
     setcan(true)
     setsum(false)
   }
-  function summary_page(){
-    console.log("ok")
+  function summary_page(idx){
+    console.log(state[idx].orderSummary)
+    let order_summary=state[idx].orderSummary
+     setorder_det(order_summary)
     setsum(true)
-       
+      
+  }
+
+  function go_back_toUserD(){
+    setsum(false)
   }
   // console.log(props.updatecancal);
   useEffect(() => {
@@ -37,7 +44,8 @@ let Userdetails = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        // console.log(data.post[0].length)
+        console.log(data.post[0].orders[3].orderSummary)
         setstate(data.post[0].orders);
         set_name(data.post[0].name);
 
@@ -48,16 +56,17 @@ let Userdetails = (props) => {
   return (
     <>
       {/* <Link to="/userdetails">create</Link> */}
+      
       { can?<Cancal setcan={setcan} />:""}
-      {sum?<SummaryPage orderstatus={true} cancalorder={ca}/>:""}
+      {sum?<SummaryPage orderstatus={true} cancalorder={ca} changeback ={go_back_toUserD}  confrimCancal={setConf_can} o_d={order_det}/>:""}
       {/* {props.updatecancal?<Cancal/>:""} */}
-      <Navbar After_Login={true} name={name} />
+      <Navbar After_Login={true} name={name}  />
         {/* <Orderpagesidebar/> */}
       <div className="order-header">
-        <h3 style={{marginLeft:"101px"}}>Orders|0</h3>
-        <Link to="/Cardorder"><button style={{alignSelf:"center",padding:"7px 28px 6px 29px",color:"#5861AE",marginTop:"34px"}}>create</button></Link>
-        <img  src={searchphoto} style={{width:"20px",alignSelf:"center"}}/>
-        <input type={"search"} className="search-input"/>
+        <h3 style={{marginLeft:"101px",color:"#0a0a0a"}}>Orders|0</h3>
+        <Link to="/Cardorder"><button style={{alignSelf:"center",padding:"7px 28px 6px 29px",color:"#5861AE",marginTop:"34px",marginLeft:"700px"}}>create</button></Link>
+        <img  src={searchphoto} style={{width:"20px",alignSelf:"center",marginRight:"40px"}}/>
+        <input type={"search"} className="search-input" style={{marginRight:"200px"}}/>
       </div>
          <table  className="table-head" style={{backgroundColor:"black",color:"white"}}>
               <tr>
@@ -98,7 +107,7 @@ let Userdetails = (props) => {
                 <td>{ele.total_item}</td>
                 <td style={{ color: "#5861AE" }}>{ele.price}</td>
                 <td>{ele.status }</td>
-                <td><i className="far fa-eye" onClick={()=>{summary_page()}}></i></td>
+                <td><i className="far fa-eye"  onClick={()=>{summary_page(i)}} ></i></td>
               </tr>
             </table>
            
