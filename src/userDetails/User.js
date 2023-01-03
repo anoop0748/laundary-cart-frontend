@@ -25,7 +25,7 @@ let Userdetails = (props) => {
   function summary_page(idx){
     console.log(state[idx].orderSummary)
     let order_summary=state[idx].orderSummary
-     setorder_det(order_summary)
+    setorder_det(order_summary)
     setsum(true)
       
   }
@@ -44,9 +44,9 @@ let Userdetails = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data.post[0].length)
-        console.log(data.post[0].orders[3].orderSummary)
+        console.log(data.post[0].orders)
         setstate(data.post[0].orders);
+        
         set_name(data.post[0].name);
 
       })
@@ -63,10 +63,11 @@ let Userdetails = (props) => {
       <Navbar After_Login={true} name={name}  />
         {/* <Orderpagesidebar/> */}
       <div className="order-header">
-        <h3 style={{marginLeft:"101px",color:"#0a0a0a"}}>Orders|0</h3>
-        <Link to="/Cardorder"><button style={{alignSelf:"center",padding:"7px 28px 6px 29px",color:"#5861AE",marginTop:"34px",marginLeft:"700px"}}>create</button></Link>
-        <img  src={searchphoto} style={{width:"20px",alignSelf:"center",marginRight:"40px"}}/>
-        <input type={"search"} className="search-input" style={{marginRight:"200px"}}/>
+        <h3 style={{marginLeft:"101px"}}>Orders|0</h3>
+        <Link to="/Cardorder"><button style={{alignSelf:"center",padding:"7px 28px 6px 29px",color:"#5861AE"}}>create</button></Link>
+
+        <img  src={searchphoto} style={{width:"20px",alignSelf:"center"}}/>
+        <input type={"search"} className="search-input"/>
       </div>
          <table  className="table-head" style={{backgroundColor:"black",color:"white"}}>
               <tr>
