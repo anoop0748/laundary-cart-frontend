@@ -1,38 +1,46 @@
-import {  useState } from 'react'
-import {  useNavigate } from 'react-router-dom';
+import {  useEffect, useState } from 'react'
+import {  Link, useNavigate } from 'react-router-dom';
 import Userdetails from '../userDetails/User';
+import axios from 'axios'
 import './summary.css'
 
 function SummaryPage(props){
-    const navigate = useNavigate()
-    // dummy data for render table.
-    console.log(props.orderstatus);
-    let[usewrong,setwrong]=useState(false)
+    let val1=props.itemarry
+    let p=0
+    let Quantity=0
+    let token=window.localStorage.getItem('token')
+    for(let i=0;i<val1.length;i++){
+        p=p+(val1[i].quantity* val1[i].washing+val1[i].ironing+val1[i].bleach+val1[i].towel)
+        Quantity=Quantity+Number(val1[i].quantity)
+    }
 
+    const [unique,set_unique] = useState(0)
+     const data = {
+    order_id: `laundry${unique}`,
+    orderDate: `${new Date().toJSON().slice(0, 10)},${new Date().getHours()}:${new Date().getMinutes()}`,
+    location: "madhyapradesh",
+    city: "sidhi",
+    phone: "+917656579478",
+    total_item: Quantity,
+    price:p ,
+    status: "Ready to pickup",
+    orderSummary:props.itemarry
+}
+
+    const navigate = useNavigate()
+    // console.log(props.itemarry)
+    // console.log(Date.now())
+    // dummy data for render table.
+    // console.log(props.orderstatus);
+    let[usewrong,setwrong]=useState(false)
+    
     function wrong(){
 
         console.log("wrong",props);
-    
-    //    setwrong(true)
-       props.changeback()
+        props.cr_summary(false)
     }
-    let orderDetails = [
-        {
-            washItem: "Shirts",
-            washType: "Washing,Ironing",
-            priceDetails: "5 X 20 =",
-            total:100
-        }, {
-            washItem: "Jeans",
-            washType: "Washing,Ironing",
-            priceDetails: "5 X 30 =",
-            total:150
-        }, {
-            washItem: "Shirts",
-            washType: "Washing,Ironing",
-            priceDetails: "5 X 20 =",
-            total:100
-        }];
+    let orderDetails=props.itemarry
+
         const [store_address,set_storeAdd] = useState(false);
         const [user_add,set_userAdd] = useState(false)
         function get_storeAdd(e){
@@ -50,17 +58,30 @@ function SummaryPage(props){
             console.log(e.target.value);
             set_userAdd(true);
         }
-        function confrim_order(e){
+         async function confrim_order(e){
             e.preventDefault();
             if(store_address && user_add){
                 // send details to backend  route ('/successfulLogin') in json formate.
                 // if response status 200 then redirect  to '/sucessPopup' route.
+                set_unique(unique+1)
+                console.log('...............',token)
+                await axios.post("https://laundry-backend-i2fe.onrender.com/successfulLogin",{
+                    headers: {
+                        Authorization: token,
+                         //th token is a variable which holds the token
+                         'Content-Type': 'application/json;charset=UTF-8',
+
+                      },
+                      body:data
+                })
                 navigate('/sucessPopup')
+                console.log(data)
             }
         }
         function comf_cancal(){
             props.confrimCancal(true);
             props.changeback()
+            
         }
             
     return(
@@ -71,7 +92,8 @@ function SummaryPage(props){
             <div id="summary_header" >
                 <div id='sum_head_cont'>
                     <h3>SUMMARY</h3>
-                <h4 onClick={wrong}>X</h4>
+                    <h4 onClick={wrong} style={{color:'white'}}> X </h4>
+                  
                 </div>
                 <div id='store_details'>
                     <div>
@@ -103,10 +125,10 @@ function SummaryPage(props){
                             return(
                              
                                     <tr key={key}  id="summ_order">
-                                    <td>{val.washItem}</td>
-                                    <td>{val.washType}</td>
-                                    <td>{val.priceDetails}</td>
-                                    <td>{val.total}</td>
+                                    <td>{val.name}</td>
+                                    <td>{`${val.washing!=null?'washing':''}${val.ironing!=null?'/ironing':''}${val.bleach!=null?'/bleach':''}${val.towel!=null?'/towel':''}`}</td>
+                                    <td>{`${val.quantity} X ${val.washing+val.ironing+val.bleach+val.towel}=`}</td>
+                                    <td>{val.quantity*(val.washing+val.ironing+val.bleach+val.towel)}</td>
                                 </tr>
                                 
                            
@@ -118,7 +140,7 @@ function SummaryPage(props){
                             <td></td>
                             <td></td>
                             <td>Sub Total:</td>
-                            <td>450</td>
+                            <td>{data.price}</td>
                         </tr>
                         <tr>
                             <td></td>
@@ -132,7 +154,7 @@ function SummaryPage(props){
                             <td></td>
                             <td></td>
                             <td>Total :</td>
-                            <td> Rs 560</td>
+                            <td> Rs {data.price+90}</td>
                         </tr>
                         </tfoot>
                         </table>
