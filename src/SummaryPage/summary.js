@@ -1,4 +1,7 @@
+
 import {  useEffect, useState } from 'react'
+
+
 import {  Link, useNavigate } from 'react-router-dom';
 import Userdetails from '../userDetails/User';
 import axios from 'axios'
@@ -34,6 +37,7 @@ function SummaryPage(props){
     // console.log(props.orderstatus);
     let[usewrong,setwrong]=useState(false)
     
+
     function wrong(){
 
         console.log("wrong",props);
@@ -179,8 +183,7 @@ function SummaryPage(props){
                     </div>
                 </div>
                 <div id='summ_footer'>
-                   {props.orderstatus? <button onClick={comf_cancal} style={{backgroundColor:"red",padding:"5px"}}>CancalOrder</button>:
-                    <button onClick={confrim_order} style={store_address && user_add?{backgroundColor:'#4552C1'}:{}}>Confirm</button>}
+                   {props.orderstatus? <button style={{backgroundColor:"red",padding:"5px"}} onClick={()=>{props.cancalorder()}}>CancalOrder</button>: <button onClick={confrim_order} style={store_address && user_add?{backgroundColor:'#4552C1'}:{}}>Confirm</button>}
                 </div>
             </div>
         </div>
