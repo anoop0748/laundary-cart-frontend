@@ -9,7 +9,6 @@ import userlist from "../logo/list@2x.png"
 import { Link, redirect, useNavigate } from "react-router-dom"
 import SummaryPage from "../SummaryPage/summary"
 import Cancal from "../cancalorderpopup/cancal"
-// import Orderpagesidebar from "../Orderpage/Orderpagesidebar"
 let Userdetails = (props) => {
   const token = window.localStorage.getItem('token');
   const [name, set_name] = useState("");
@@ -30,7 +29,7 @@ let Userdetails = (props) => {
   }
   function summary_page(idx){
     
-   console.log(state[idx].orderSummary)
+  
    let orderSummary = state[idx].orderSummary;
 
 
@@ -53,7 +52,7 @@ let Userdetails = (props) => {
       navigate('/')
     }
     console.log(token)
-    fetch("https://laundry-backend-i2fe.onrender.com/successfulLogin", {
+    fetch("https://laundry-backend-service.onrender.com/successfulLogin", {
       method: "get",
       headers: {
         authorization: token
@@ -61,7 +60,6 @@ let Userdetails = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.post[0])
         setstate(data.post[0].orders);
         set_name(data.post[0].name);
 
@@ -75,12 +73,10 @@ let Userdetails = (props) => {
 
   return (
     <>
-      {/* <Link to="/userdetails">create</Link> */}
       { can?<Cancal setcan={setcan} orderId = {orde_id} st_cancle={st_cancle}/>:""}
       {sum?<SummaryPage orderstatus={true} tData = {total_data} procced={procced} cancalorder={ca} data={order_sum}/>:""}
-      {/* {props.updatecancal?<Cancal/>:""} */}
+     
       <Navbar After_Login={true} name={name} />
-        {/* <Orderpagesidebar/> */}
       <div className="order-header">
         <h3 style={{marginLeft:"101px"}}>Orders|0</h3>
         <Link to="/Cardorder"><button style={{alignSelf:"center",padding:"7px 28px 6px 29px",color:"#5861AE"}}>create</button></Link>
