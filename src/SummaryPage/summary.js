@@ -1,4 +1,3 @@
-
 import {  useEffect, useState } from 'react'
 
 
@@ -8,25 +7,30 @@ import axios from 'axios'
 import './summary.css'
 
 function SummaryPage(props){
+    const [store_address,set_storeAdd] = useState(false);
+        const [user_add,set_userAdd] = useState(false)
     let val1=props.itemarry
     let p=0
     let Quantity=0
-    let token=window.localStorage.getItem('token')
+    let token=window.localStorage.getItem('token');
+    let orderDetails=[];
+    let data = {}
     
-
     const [unique,set_unique] = useState(0)
-    let data={}
     if(props.orderstatus){
-         data=props.o_d.orders
-        //  console.log(data[0].quantity);
+        data = props.data
+        orderDetails = data;
+        // console.log(props.tData)
+        
+        
     }
-     else{
+    else{
+        orderDetails=props.itemarry
         for(let i=0;i<val1.length;i++){
             p=p+(val1[i].quantity* val1[i].washing+val1[i].ironing+val1[i].bleach+val1[i].towel)
             Quantity=Quantity+Number(val1[i].quantity)
-        }      
-       
-        data = {
+        } 
+      data = {
     order_id: `laundry${unique}`,
     orderDate: `${new Date().toJSON().slice(0, 10)},${new Date().getHours()}:${new Date().getMinutes()}`,
     location: "madhyapradesh",
@@ -37,11 +41,9 @@ function SummaryPage(props){
     status: "Ready to pickup",
     orderSummary:props.itemarry
 }
-   data.orderSummary.price=data.price;
-   data.orderSummary.total_item=data.total_item
-     }
+    }
+    
 
-    //  console.log(data[0].quantity)
     const navigate = useNavigate()
     // console.log(props.itemarry)
     // console.log(Date.now())
@@ -54,21 +56,13 @@ function SummaryPage(props){
 
         console.log("wrong",props);
         if(props.orderstatus){
-            props.changeback()
-        }
-        else{props.cr_summary(false)}
+            props.cancalorder()
+        
+    }else{props.cr_summary(false)}
     }
-    let orderDetails={}
     
-        if(props.orderstatus){
-            orderDetails=props.o_d
-            console.log(props.o_d);
-        }
-        else{
-            orderDetails=props.itemarry
-        }
-        const [store_address,set_storeAdd] = useState(false);
-        const [user_add,set_userAdd] = useState(false)
+
+        
         function get_storeAdd(e){
             console.log(e.target.value)
             let sel_data = e.target.value;
@@ -95,10 +89,9 @@ function SummaryPage(props){
                     headers: {
                         Authorization: token,
                          //th token is a variable which holds the token
-                         'Content-Type': 'application/json;charset=UTF-8'
+                         'Content-Type': 'application/json;charset=UTF-8',
 
                       }
-                     
                 })
                 navigate('/sucessPopup')
                 console.log(data)
@@ -108,6 +101,10 @@ function SummaryPage(props){
             props.confrimCancal(true);
             props.changeback()
             
+        }
+        function procced(){
+            props.cancalorder();
+            props.procced()
         }
             
     return(
@@ -166,7 +163,7 @@ function SummaryPage(props){
                             <td></td>
                             <td></td>
                             <td>Sub Total:</td>
-                           {props.orderstatus?<td>{props.o_d.price}</td>: <td>{data?.price}</td>}
+                            {props.orderstatus?<td>{props.tData.price}</td>:<td>{data.price}</td>}
                         </tr>
                         <tr>
                             <td></td>
@@ -180,7 +177,7 @@ function SummaryPage(props){
                             <td></td>
                             <td></td>
                             <td>Total :</td>
-                            {props.orderstatus?<td>Rs {props.price}</td>:<td> Rs {data.price+90}</td>}
+                            {props.orderstatus?<td>{props.tData.price + 90}</td>:<td> Rs {data.price+90}</td>}
                         </tr>
                         </tfoot>
                         </table>
@@ -190,22 +187,22 @@ function SummaryPage(props){
                     <div id='add-heading'>Address</div>
                     <div id='Address_box'>
                         <div className='add_container'>
-                        <input type="radio" id="html" name="address" value="address1" onChange={get_user_add}></input>
+                        {props.orderstatus?"":<input type="radio" id="html" name="address" value="address1" onChange={get_user_add}></input>}
                             <h6>Home</h6>
                             <p>#223, 10th road, Jp Nagar, Bangalore</p>
                             
-                        </div>
-                        <div className='add_container'>
+                            </div>
+                            {props.orderstatus?"":<div className='add_container'>
                         <input type="radio" id="html" name="address" value="address2" onChange={get_user_add}></input>
                             <h6>Other</h6>
                             <p>#223, 10th road, Jp Nagar, Bangalore</p>
-                        </div>
+                        </div>}
                         {props.orderstatus?"":<div><h5>ADD NEW</h5></div>}
 
                     </div>
                 </div>
                 <div id='summ_footer'>
-                   {props.orderstatus? <button style={{backgroundColor:"red",padding:"5px"}} onClick={()=>{props.cancalorder()}}>CancalOrder</button>: <button onClick={confrim_order} style={store_address && user_add?{backgroundColor:'#4552C1'}:{}}>Confirm</button>}
+                   {props.orderstatus? <button style={{backgroundColor:"red",padding:"5px"}} onClick={()=>{procced()}}>CancalOrder</button>: <button onClick={confrim_order} style={store_address && user_add?{backgroundColor:'#4552C1'}:{}}>Confirm</button>}
                 </div>
             </div>
         </div>

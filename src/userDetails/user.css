@@ -36,11 +36,13 @@
 .order-header {
   display: flex;
   justify-content: space-between;
+  margin-left: 50px;
 }
 
 .order-header button {
   align-self: flex-end;
   margin-left: 900px;
+  margin-top: 34px
 }
 
 .search-input {

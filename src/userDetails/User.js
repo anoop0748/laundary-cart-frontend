@@ -6,7 +6,7 @@ import searchphoto from "./mag.svg"
 import userhome from "../logo/home.png"
 import usermore from "../logo/more.png"
 import userlist from "../logo/list@2x.png"
-import { Link } from "react-router-dom"
+import { Link, redirect, useNavigate } from "react-router-dom"
 import SummaryPage from "../SummaryPage/summary"
 import Cancal from "../cancalorderpopup/cancal"
 // import Orderpagesidebar from "../Orderpage/Orderpagesidebar"
@@ -16,25 +16,42 @@ let Userdetails = (props) => {
   let [state, setstate] = useState([])
   let [sum,setsum]=useState(false)
   let [can,setcan]=useState(false)
-  const [conf_can, setConf_can] = useState(false)
-  let [order_det,setorder_det]=useState()
+  const [order_sum , set_order_sum] = useState();
+  let [total_data,setTotal_data]= useState({})
+  let [orde_id ,set_order_id] = useState("");
+  let [status_ord, set_status_ord] = useState("")
+
+ 
   function ca(){
-    setcan(true)
     setsum(false)
+  }
+  function procced (){
+    setcan(true)
   }
   function summary_page(idx){
-    console.log(state[idx].orderSummary)
-    let order_summary=state[idx].orderSummary
-    setorder_det(order_summary)
-    setsum(true)
-      
-  }
+    
+   console.log(state[idx].orderSummary)
+   let orderSummary = state[idx].orderSummary;
 
-  function go_back_toUserD(){
-    setsum(false)
+
+   set_order_sum(orderSummary);
+   let price  = state[idx].price;
+   let totel_items = state[idx].total_item;
+   total_data.price = price;
+   total_data.total_item = totel_items;
+   setTotal_data({price:price,tatal_item:totel_items})
+   set_order_id(state[idx].order_id)
+   
+   
+    setsum(true)
+    
   }
   // console.log(props.updatecancal);
+  let navigate = useNavigate()
   useEffect(() => {
+    if(!token){
+      navigate('/')
+    }
     console.log(token)
     fetch("https://laundry-backend-i2fe.onrender.com/successfulLogin", {
       method: "get",
@@ -44,23 +61,25 @@ let Userdetails = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.post[0].orders)
+        console.log(data.post[0])
         setstate(data.post[0].orders);
-        
         set_name(data.post[0].name);
 
       })
 
   }, [])
+  function st_cancle(idx){
+    state[idx].status = "Cancel"
+  }
+     
 
   return (
     <>
       {/* <Link to="/userdetails">create</Link> */}
-      
-      { can?<Cancal setcan={setcan} />:""}
-      {sum?<SummaryPage orderstatus={true} cancalorder={ca} changeback ={go_back_toUserD}  confrimCancal={setConf_can} o_d={order_det}/>:""}
+      { can?<Cancal setcan={setcan} orderId = {orde_id} st_cancle={st_cancle}/>:""}
+      {sum?<SummaryPage orderstatus={true} tData = {total_data} procced={procced} cancalorder={ca} data={order_sum}/>:""}
       {/* {props.updatecancal?<Cancal/>:""} */}
-      <Navbar After_Login={true} name={name}  />
+      <Navbar After_Login={true} name={name} />
         {/* <Orderpagesidebar/> */}
       <div className="order-header">
         <h3 style={{marginLeft:"101px"}}>Orders|0</h3>
@@ -108,7 +127,7 @@ let Userdetails = (props) => {
                 <td>{ele.total_item}</td>
                 <td style={{ color: "#5861AE" }}>{ele.price}</td>
                 <td>{ele.status }</td>
-                <td><i className="far fa-eye"  onClick={()=>{summary_page(i)}} ></i></td>
+                <td><i className="far fa-eye" key={i} onClick={()=>{summary_page(i);st_cancle(i)}}></i></td>
               </tr>
             </table>
            
