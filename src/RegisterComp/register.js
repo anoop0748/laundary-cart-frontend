@@ -9,7 +9,7 @@ import { Link,  } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
-const Url = "https://laundry-backend-i2fe.onrender.com/register"
+const Url = "https://laundry-backend-service.onrender.com/register"
 function RegisterPage(){
     const form_data = useRef();
     let navigate = useNavigate();
@@ -26,7 +26,6 @@ function RegisterPage(){
             password:form_data.current.password.value
         }
         const response = await axios.post(Url,data)
-        console.log(response.status)
         if(response.status === 200){
             navigate('/')
         }
