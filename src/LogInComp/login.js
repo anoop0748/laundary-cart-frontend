@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const Url = "https://laundry-backend-i2fe.onrender.com/login"
+const Url = "https://laundry-backend-service.onrender.com/login"
 
 
 
@@ -25,13 +25,11 @@ function LogInForm() {
         set_color(false)
         return;
       } else {
-        console.log("number is invalid")
         set_color(true)
 
       }
     } else {
       if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(id)) {
-        console.log("email is valid")
         setUser_name(id)
         set_color(false)
       }
@@ -54,32 +52,14 @@ function LogInForm() {
       email: user_name,
       password: user_password
     }
-    console.log(data)
+    
     let response = await axios.post(Url, data);
-    console.log(response.data.status)
     if(response.data.status === "success"){
       window.localStorage.setItem("token", response.data.token);
-      console.log(window.localStorage.getItem("token"));
       navigate('/Cardorderpage')
     }
     
   }
-
-
-
-
-    // return(
-    //     <div id='login'>
-    //       <div id='loginsection'>
-    //       <h3>SIGN IN</h3>
-    //     <div id='input1'>
-    //     <input type="text" placeholder="Mobile/Email" onBlur={userId}/>
-    //     </div>
-    //    <div id='input2'>
-    //    <input type="password" placeholder="Password" onBlur={(e)=>setUser_password(e.target.value)}/>
-    //    </div>
-    //     <h5>Forget Password?</h5>
-
   return (
     <div className='login'>
       <div>
