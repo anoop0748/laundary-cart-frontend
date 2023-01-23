@@ -1,5 +1,5 @@
 
-import './footerNav.css'
+import './footernav.css'
 function FooterNav() {
     return (
 
