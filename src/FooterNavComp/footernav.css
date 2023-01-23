@@ -42,7 +42,7 @@
 }
 #footer_nav_hm_r{
     display: flex;
-    padding: 0px;
+    padding: 0.1px;
 }
 #footer_icons img{
     width: 25%;
