@@ -1,4 +1,6 @@
 import {  useEffect, useState } from 'react'
+
+
 import {  Link, useNavigate } from 'react-router-dom';
 import Userdetails from '../userDetails/User';
 import axios from 'axios'
@@ -17,7 +19,7 @@ function SummaryPage(props){
     const [unique,set_unique] = useState(0)
     if(props.orderstatus){
         data = props.data
-        orderDetails = data;    
+        orderDetails = data;
     }
     else{
         orderDetails=props.itemarry
@@ -37,18 +39,23 @@ function SummaryPage(props){
     orderSummary:props.itemarry
 }
     }
-    
-
     const navigate = useNavigate()
     let[usewrong,setwrong]=useState(false)
     
 
     function wrong(){
+
+        console.log("wrong",props);
         if(props.orderstatus){
             props.cancalorder()
+        
     }else{props.cr_summary(false)}
     }
+    
+
+        
         function get_storeAdd(e){
+            console.log(e.target.value)
             let sel_data = e.target.value;
 
             if(sel_data !== "Choose..."){
@@ -59,6 +66,7 @@ function SummaryPage(props){
         }
     }
         function get_user_add(e){
+            console.log(e.target.value);
             set_userAdd(true);
         }
          async function confrim_order(e){
@@ -66,9 +74,9 @@ function SummaryPage(props){
             if(store_address && user_add){
                 // send details to backend  route ('/successfulLogin') in json formate.
                 // if response status 200 then redirect  to '/sucessPopup' route.
+                
                 set_unique(unique+1)
-               
-                await axios.post("https://laundry-backend-service.onrender.com/successfulLogin",data,{
+                await axios.post("https://laundry-backend-i2fe.onrender.com/successfulLogin",data,{
                     headers: {
                         Authorization: token,
                          //th token is a variable which holds the token
@@ -77,7 +85,7 @@ function SummaryPage(props){
                       }
                 })
                 navigate('/sucessPopup')
-               
+                console.log(data)
             }
         }
         function comf_cancal(){
@@ -104,19 +112,19 @@ function SummaryPage(props){
                 <div id='store_details'>
                     <div>
                         <h6>Store Location:</h6>
-                        <select id='options'onChange={get_storeAdd}>
-                            <option>Choose...</option>
+                        <select id='options'onChange={get_storeAdd} disabled={props.orderstatus?true:false}>
+                            {props.orderstatus?'':<option>Choose...</option>}
                             <option>Sidhi</option>
                         </select>
                     </div>
                     <div>
                     <h6>Store Address:</h6>
-                    {store_address?<p>Near Smart Chowk Sidhi</p>:<p>__</p>}
+                    {store_address || props.orderstatus?<p>Near Smart Chowk Sidhi</p>:<p>__</p>}
                     
                     </div>
                     <div>
                         <h6>Phone </h6>
-                        {store_address?<p>+919999999999</p>:<p>__</p>}
+                        {store_address || props.orderstatus?<p>+919999999999</p>:<p>__</p>}
                         
                     </div>
                 </div>

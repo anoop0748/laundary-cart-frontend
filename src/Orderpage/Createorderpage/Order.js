@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 import Navbar from '../../HeaderComp/navbar'
 import SummaryPage from '../../SummaryPage/summary'
 function Orderpage() {
-    let url='https://laundry-backend-service.onrender.com/successfulLogin'
+    let url='https://laundry-backend-i2fe.onrender.com/successfulLogin'
     let token=window.localStorage.getItem('token')
     let [userN,setuserN]=useState('')
     useEffect(()=>{
@@ -45,9 +45,16 @@ function Orderpage() {
     // console.log(calculationothers,others)
 
     let itemarry=[shirt,tshirt,trousers,jeans,boxer,jogger,others]
-    
+    // useEffect(()=>{
+    //     for(let i=0;i<itemarry.length;i++){
+    //         if(itemarry[i].quantity==0){
+    //             itemarry.splice(i,1)
+    //         }
+    //     }
+    // },[])
     let [cr_summary,setcr_summary]=useState(false)
     let selecteditem=[]
+    console.log('......',selecteditem)
     return (
         <div>
             {/* <Orderpagenav></Orderpagenav> */}

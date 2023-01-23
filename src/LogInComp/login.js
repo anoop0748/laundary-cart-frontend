@@ -6,11 +6,11 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const Url = "https://laundry-backend-service.onrender.com/login"
+const Url = "https://laundry-backend-i2fe.onrender.com/login"
 
 
 
-function LogInForm() {
+function LogInForm(props) {
   let navigate = useNavigate();
   const [user_name, setUser_name] = useState("");
   const [user_password, setUser_password] = useState("");
@@ -25,11 +25,13 @@ function LogInForm() {
         set_color(false)
         return;
       } else {
+        console.log("number is invalid")
         set_color(true)
 
       }
     } else {
       if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(id)) {
+        console.log("email is valid")
         setUser_name(id)
         set_color(false)
       }
@@ -52,11 +54,18 @@ function LogInForm() {
       email: user_name,
       password: user_password
     }
-    
+    props.loder(true)
     let response = await axios.post(Url, data);
+    console.log(response.data.status)
     if(response.data.status === "success"){
       window.localStorage.setItem("token", response.data.token);
-      navigate('/Cardorderpage')
+      console.log(window.localStorage.getItem("token"));
+      navigate('/userdetails')
+    }
+    
+    else if(response.request.status === 400){
+      alert("There no register user with this email!")
+      console.log(response.request.status === 400)
     }
     
   }
@@ -65,7 +74,7 @@ function LogInForm() {
       <div>
         <h3>SIGN IN</h3>
       </div>
-      <div>
+      <div id='user_name_cont'>
         {user_id_lable ? <label htmlFor="user_name">Mobile/Email<br /></label> : ""}
         <input type="text" placeholder="Mobile/Email" onBlur={userId} id="user_name"
           onClick={() => set_user_id_lable(true)} style={col ? { color: 'red', borderBottomColor: 'red' } : {}} />
