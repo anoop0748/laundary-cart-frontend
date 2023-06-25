@@ -38,12 +38,15 @@ function RegisterPage(){
         if(response.status === 200){
             navigate('/')
         }
-        else {
+        else{
+            setSpin(false);
+            return alert("Server Issue..")
+        }
+        }else {
+            setSpin(false);
             alert('Please Select Term & Condition')
             setSpin(false)
         }
-        
-    }
     }
     return(
         <>
