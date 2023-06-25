@@ -28,7 +28,7 @@ function SummaryPage(props){
             Quantity=Quantity+Number(val1[i].quantity)
         } 
       data = {
-    order_id: `laundry${unique}`,
+    order_id: `laundry${unique + Math.floor(Math.random() * 1000)}`,
     orderDate: `${new Date().toJSON().slice(0, 10)},${new Date().getHours()}:${new Date().getMinutes()}`,
     location: "madhyapradesh",
     city: "sidhi",
