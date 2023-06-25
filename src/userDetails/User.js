@@ -9,12 +9,14 @@ import { Link, redirect, useNavigate } from "react-router-dom"
 import SummaryPage from "../SummaryPage/summary"
 import Cancal from "../cancalorderpopup/cancal"
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Spinner from "../spinner/spinner"
 
 
 
 let Userdetails = (props) => {
   const token = window.localStorage.getItem('token');
   const [name, set_name] = useState("");
+  let [spin, setSpin] = useState(false);
   let [state, setstate] = useState([])
   let [sum, setsum] = useState(false)
   let [can, setcan] = useState(false)
@@ -68,9 +70,10 @@ let Userdetails = (props) => {
   }
   return (
     <>
+      { spin?<Spinner/> : ""}
       {can ? <Cancal setcan={setcan} orderId={orde_id} st_cancle={st_cancle} flag={setFlag}/> : ""}
       {sum ? <SummaryPage orderstatus={true} tData={total_data} procced={procced} cancalorder={ca} data={order_sum} /> : ""}
-      <Navbar After_Login={true} name={name} />
+      <Navbar After_Login={true} name={name} spin = {setSpin} />
       <div className="orders_body_cont">
         <div className="user-sidebar">
           <div className='bg_wh'><img src='./projecIimages/home2.png' alt='homm png' /></div>

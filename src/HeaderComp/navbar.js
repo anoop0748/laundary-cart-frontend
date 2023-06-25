@@ -4,11 +4,14 @@ import './navbar.css'
 
 function Navbar (props){
     const After_Login = props.After_Login;
-    const user_name = props.name
+    const user_name = props.name;
+    
    
 
     
     function logout_user(){
+        
+        props.spin(true)
         window.localStorage.clear("token");
         
               // Force a reload if the user has logged out.
