@@ -54,12 +54,13 @@ function LogInForm(props) {
       email: user_name,
       password: user_password
     }
-    // props.loder(true)
+    props.loder(true);
     
     
     try {
       let response = await axios.post(Url, data)
       if(response.data.status === "success"){
+        props.loder(false);
         window.localStorage.setItem("token", response.data.token);
         console.log(window.localStorage.getItem("token"));
         navigate('/userdetails')
@@ -68,8 +69,6 @@ function LogInForm(props) {
       else if(response.request.status === 400){
         alert("There no register user with this email!")
         props.loder(false);
-  
-        console.log(response.request.status === 400)
       }
       
     } catch (error) {
