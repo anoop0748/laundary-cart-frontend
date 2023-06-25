@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import Spinner from "../spinner/spinner";
 
 
-const Url = "https://laundry-backend-i2fe.onrender.com/register"
+const Url = "https://laundry-backend-service.onrender.com/register"
 function RegisterPage(){
     const [spin,setSpin] = useState(false)
     const form_data = useRef();

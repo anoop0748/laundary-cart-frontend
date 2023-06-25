@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const Url = "https://laundry-backend-i2fe.onrender.com/login"
+const Url = "https://laundry-backend-service.onrender.com/login"
 
 
 
@@ -45,7 +45,7 @@ function LogInForm(props) {
 
 
   
-  async function logIn(e) {
+   async function logIn(e) {
     e.preventDefault();
     if (user_name === "") {
       return alert("Please enter Mobile/Email for Sign In !!")
@@ -54,19 +54,30 @@ function LogInForm(props) {
       email: user_name,
       password: user_password
     }
-    props.loder(true)
-    let response = await axios.post(Url, data);
-    console.log(response.data.status)
-    if(response.data.status === "success"){
-      window.localStorage.setItem("token", response.data.token);
-      console.log(window.localStorage.getItem("token"));
-      navigate('/userdetails')
+    // props.loder(true)
+    
+    
+    try {
+      let response = await axios.post(Url, data)
+      if(response.data.status === "success"){
+        window.localStorage.setItem("token", response.data.token);
+        console.log(window.localStorage.getItem("token"));
+        navigate('/userdetails')
+      }
+      
+      else if(response.request.status === 400){
+        alert("There no register user with this email!")
+        props.loder(false);
+  
+        console.log(response.request.status === 400)
+      }
+      
+    } catch (error) {
+      console.log("yes",error.response)
+      props.loder(false)
+      return alert(error.response.data.massage)
     }
     
-    else if(response.request.status === 400){
-      alert("There no register user with this email!")
-      console.log(response.request.status === 400)
-    }
     
   }
   return (

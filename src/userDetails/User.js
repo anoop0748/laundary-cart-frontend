@@ -46,7 +46,7 @@ let Userdetails = (props) => {
       navigate('/')
     }
     console.log(token)
-    fetch("https://laundry-backend-i2fe.onrender.com/successfulLogin", {
+    fetch("https://laundry-backend-service.onrender.com/successfulLogin", {
       method: "get",
       headers: {
         authorization: token
