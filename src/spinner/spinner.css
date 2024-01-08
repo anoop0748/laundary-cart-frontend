@@ -2,9 +2,10 @@
     height: 100%;
     width: 100%;
     background-color: #45557633;
-    position: absolute;
-    z-index: 9;
+    position: fixed;
+    z-index: 1;
     display: flex!important;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }

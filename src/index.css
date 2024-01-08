@@ -17,3 +17,16 @@ code {
 body *, ::after, ::before {
   box-sizing: content-box;
 }
+@media only screen and (max-width:600px){
+  #two_section{
+    display: flex;
+    flex-direction: column;
+  }
+  #two_section #main_logo_cont{
+    width: 100%;
+  }
+  #two_section .login{
+    width: 100%;
+  }
+  
+}
