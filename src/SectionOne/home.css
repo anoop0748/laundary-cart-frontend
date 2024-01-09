@@ -52,4 +52,20 @@ position: relative;
     width: 100%;
     background-color: #00000038;
 }
-
+@media only screen and (max-width:600px) {
+    #main_logo_cont{
+        width : 100%;
+        flex-direction: column;
+    }
+    #blue_line_cont{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width:100%;
+        height: 10px;
+    }
+    #blue_line{
+        width: 34%;
+    }
+    
+}

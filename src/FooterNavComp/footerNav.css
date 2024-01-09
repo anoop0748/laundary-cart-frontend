@@ -47,3 +47,27 @@
 #footer_icons img{
     width: 25%;
 }
+@media only screen and (max-width:600px){
+    #footer{
+        width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+    #footer h4{
+        font-size: 1rem;
+    }
+    .footer_navlinks{
+        height: fit-content;
+        background-size: contain;
+    }
+    .footer_navlinks ul{
+        
+        padding: 0px 10px;
+    }
+    #contact{
+        display: none;
+    }
+    #pricing{
+        display: none;
+    }
+}

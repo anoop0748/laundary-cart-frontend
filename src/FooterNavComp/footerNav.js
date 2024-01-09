@@ -6,7 +6,7 @@ function FooterNav() {
         <div id='footer'>
             <div>
                 <section className='refer_container'>
-                    <h4>Now Refer & Earn 500 for every referral*</h4>
+                    <h4>Now Refer & Earn 500 for every referral</h4>
                     <h6><i>* Terms and conditions will be applied</i></h6>
                 </section>
                 <section className='footer_navlinks'>
@@ -20,7 +20,7 @@ function FooterNav() {
                         <li>Sign In</li>
                         <li>Register</li>
                     </ul>
-                    <ul>
+                    <ul id="pricing">
                         <li>Pricing</li>
 
                     </ul>
@@ -29,7 +29,7 @@ function FooterNav() {
                         <li>Blogs</li>
                         <li>Create</li>
                     </ul>
-                    <ul>
+                    <ul id="contact">
                         <li>Contact</li>
                     </ul>
                     </ul>

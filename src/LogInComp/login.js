@@ -96,7 +96,7 @@ function LogInForm(props) {
         <input type="password" placeholder="Password" onBlur={(e) => setUser_password(e.target.value)}
           id="user_password" onClick={() => set_user_pass_lable(true)} />
       </div>
-      <div>
+      <div id = "forget_pass">
         <h6>Forget Password?</h6>
 
       </div>

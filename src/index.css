@@ -21,12 +21,22 @@ body *, ::after, ::before {
   #two_section{
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
   #two_section #main_logo_cont{
     width: 100%;
   }
   #two_section .login{
     width: 100%;
+  }
+   body * {
+   box-sizing: border-box;
+   
+  }
+  body{
+    max-width: 100%;
+    overflow-x: hidden;
+    
   }
   
 }
