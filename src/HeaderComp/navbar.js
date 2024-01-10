@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './navbar.css'
 
 
 function Navbar (props){
     const After_Login = props.After_Login;
     const user_name = props.name;
-    
+    let [deviceWidth,setDeviceWidth] = useState(window.innerWidth);
+    const [changMenu,setMainMenu] = useState(true)
+    useEffect(()=>{
+        setDeviceWidth(window.innerWidth)
+    },[window.innerWidth])
    
 
     
@@ -19,10 +23,24 @@ function Navbar (props){
             //   window.location.reload();
               
     }
+    function switch_menu(){
+        if(changMenu) setMainMenu(false);
+        else{setMainMenu(true)}
+    }
     return(
         <div className="header_nav">
             <div id="logo_name">LAUNDRY</div>
             <div className="nav_links">
+                {
+                (deviceWidth <= 600)?
+                <>
+                    <div className={`main_menu_container ${!changMenu?"change":""}`} onClick={()=>{switch_menu()} }>
+                        <div className="bar1"></div>
+                        <div className="bar2"></div>
+                        <div className="bar3"></div>
+                    </div>
+                </>
+                :""}
                 <style></style>
                 <ul>
                     {After_Login?"":<li>Home</li>}

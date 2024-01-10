@@ -80,4 +80,35 @@ form div{
         margin: 10px;
         height: 40px;
     }
+    #reg_container #right_side_cont #main_logo_cont .home{
+        width: 100% !important;
+        margin: 8% !important;
+    }
+    #form_container h1{
+        margin: 8%;
+    }
+    form div{
+        flex-direction: column;
+        align-items: center;
+    }
+    #form_container input{
+        width: 75%;
+    }
+    #form_container input:last-child{
+        margin: 5% 2.5% 0% 5%
+    }
+    #form_container #check_box{
+        align-items: flex-start;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-top: 5%;
+    }
+    #form_container #check_box #checkbox{
+        margin-left: 11%;
+    }
+    #form_container #check_box  label{
+        margin-left: 2%;
+        line-height: 15px;
+        font-size: 16px;
+    }
 }

@@ -31,17 +31,16 @@ function RegisterPage(){
             pincode:form_data.current.pincode.value,
             password:form_data.current.password.value
         }
-        console.log(data)
         if(get_check_d){
             const response = await axios.post(Url,data)
-        console.log(response.status)
-        if(response.status === 200){
-            navigate('/')
-        }
-        else{
-            setSpin(false);
-            return alert("Server Issue..")
-        }
+        
+            if(response.status === 200){
+                navigate('/')
+            }
+            else{
+                setSpin(false);
+                return alert("Server Issue..")
+            }
         }else {
             setSpin(false);
             alert('Please Select Term & Condition')
@@ -85,7 +84,7 @@ function RegisterPage(){
                         </div>
                         <div id="check_box">
                             <input type={'checkbox'} id="checkbox" onChange={()=>set_check_d(true)}/>
-                            <label htmlFor="checkbox"><Link to="#">I agree to Terms & Condition receiving marketing and promotional materials</Link></label>
+                            <label htmlFor="checkbox"><Link to="#">I agree to Terms & Condition receiving marketing and promotional materials.</Link></label>
                         </div>
                         <div>
                         <button onClick={Reg_User}id='reg_btn'>Register</button>

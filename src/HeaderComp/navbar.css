@@ -50,6 +50,29 @@
     background-color: #5861AE;
     color: #FFFFFF;
 }
+.main_menu_container{
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    left: 81%;
+    margin: 2% 5% 2% 0%;
+}
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color:#5861AE;
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+.change .bar1 {
+  transform: translate(0, 8.5px) rotate(-45deg);
+  background-color: #3e4252;
+}
+.change .bar2 {opacity: 0;}
+.change .bar3 {
+  transform: translate(0, -11px) rotate(45deg);
+  background-color: #3e4252;
+}
 @media only screen and (max-width:600px){
     .header_nav{
         width: 100%;
